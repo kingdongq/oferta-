@@ -1,0 +1,38 @@
+在Railway Dashboard中按以下步骤操作：
+
+====================================
+1. 打开Settings标签页
+====================================
+   - 找到 "Root Directory"
+   - 设置为: smart-poster-generator/backend
+
+====================================
+2. 配置Start Command
+====================================
+   - 找到 "Start Command"
+   - 设置为: uvicorn production_server:app --host 0.0.0.0 --port $PORT
+
+====================================
+3. 配置环境变量 (Variables标签页)
+====================================
+   添加以下变量:
+   
+   SUPABASE_URL=https://zcpqvzgezobfqwhtvtav.supabase.co
+   SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpjcHF2emdlem9iZnF3aHR2dGF2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE3MDMxMzEsImV4cCI6MjA3NzI3OTEzMX0.TJ1oeXTSHP5SX9e-Rq4MHk4tFwjpNq9dSGYEbgE6FhI
+   ANTHROPIC_AUTH_TOKEN=f6cc961bee5c423d82957cea7038a8e4.5T6q1s3ZzJaKkl9J
+   ANTHROPIC_BASE_URL=https://open.bigmodel.cn/api/anthropic
+
+====================================
+4. 重新部署
+====================================
+   - 点击 Deployments
+   - 点击 Redeploy 最新部署
+   
+====================================
+完成！
+====================================
+
+部署成功后，Railway会显示一个URL，访问：
+- /health - 健康检查
+- /docs - API文档
+
