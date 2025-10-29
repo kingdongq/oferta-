@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能海报生成器 - Smart Poster Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <header class="header">
+            <h1>🎨 智能海报生成器</h1>
+            <p class="subtitle">AI驱动的自动海报生成工具 - 比QROfertas更便捷</p>
+        </header>
+
+        <!-- 主要内容区 -->
+        <main class="main-content">
+            <!-- 左侧：输入区域 -->
+            <div class="input-section">
+                <h2>📝 描述您的需求</h2>
+                <textarea 
+                    id="productDescription" 
+                    placeholder="例如: 我需要一个包含10种热带水果的促销海报，价格要便宜，适合巴西超市"
+                    rows="6"
+                ></textarea>
+                
+                <div class="button-group">
+                    <button id="generateBtn" class="btn btn-primary">
+                        ✨ 生成海报
+                    </button>
+                    <button id="clearBtn" class="btn btn-secondary">
+                        🗑️ 清空
+                    </button>
+                </div>
+
+                <!-- 配置选项 -->
+                <div class="settings">
+                    <h3>⚙️ 设置</h3>
+                    <label>
+                        目标地区:
+                        <input type="text" id="cep" value="11720-090" placeholder="CEP">
+                    </label>
+                    <label>
+                        海报类型:
+                        <select id="posterType">
+                            <option value="tv">电视海报</option>
+                            <option value="social">社交媒体</option>
+                            <option value="print">打印海报</option>
+                            <option value="instagram">Instagram</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+
+            <!-- 右侧：结果显示 -->
+            <div class="result-section">
+                <h2>📊 生成结果</h2>
+                
+                <!-- AI分析结果 -->
+                <div id="aiAnalysis" class="result-box">
+                    <h3>🤖 AI分析</h3>
+                    <p class="placeholder">请描述您的需求，然后点击"生成海报"</p>
+                </div>
+
+                <!-- 产品列表 -->
+                <div id="productList" class="result-box">
+                    <h3>🛒 产品列表</h3>
+                    <p class="placeholder">等待生成...</p>
+                </div>
+
+                <!-- 海报预览 -->
+                <div id="posterPreview" class="result-box">
+                    <h3>🖼️ 海报预览</h3>
+                    <p class="placeholder">等待生成...</p>
+                </div>
+
+                <!-- 下载按钮 -->
+                <div id="downloadSection" style="display: none;">
+                    <button id="downloadBtn" class="btn btn-success">
+                        💾 下载海报
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- 底部信息 -->
+        <footer class="footer">
+            <p>由 Claude AI 驱动 | Powered by Anthropic Claude</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
+

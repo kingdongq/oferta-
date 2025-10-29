@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cmd.exe /c start \"d:/Nova pasta/.vscode/构思.md\")"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
