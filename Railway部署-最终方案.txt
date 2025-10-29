@@ -1,0 +1,51 @@
+Railway部署 - 使用Dockerfile（无Nixpacks选项）
+
+========================================
+关键配置（在Railway Dashboard中）
+========================================
+
+1. Settings → Source
+   Root Directory: smart-poster-generator/backend
+   
+2. Settings → Deploy
+   Build Command: （留空 - Dockerfile会自动处理）
+   Start Command: （留空 - Dockerfile会自动处理）
+   
+3. Variables标签页
+   添加环境变量：
+   SUPABASE_URL=https://zcpqvzgezobfqwhtvtav.supabase.co
+   SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+   ANTHROPIC_AUTH_TOKEN=f6cc961bee5c423d82957cea7038a8e4...
+
+========================================
+已创建的文件
+========================================
+
+✅ smart-poster-generator/backend/Dockerfile
+   - 用于backend目录部署
+
+✅ Dockerfile (根目录)
+   - 用于根目录部署
+
+✅ smart-poster-generator/backend/.dockerignore
+   - 排除不必要的文件
+
+========================================
+部署流程
+========================================
+
+1. Railway检测到Dockerfile
+2. 自动构建Docker镜像
+3. 安装Python和依赖
+4. 启动uvicorn服务器
+5. 提供服务
+
+========================================
+验证
+========================================
+
+部署成功后：
+- 查看Logs标签页
+- 应该看到：Application startup complete
+- 访问：https://your-app.railway.app/health
+

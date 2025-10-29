@@ -324,8 +324,13 @@
                 password: formData.get('password')
             };
             
+            // 获取API地址（优先使用环境变量，否则使用Railway地址）
+            const API_BASE_URL = window.API_BASE_URL || 
+                                localStorage.getItem('API_BASE_URL') || 
+                                'https://your-railway-app.up.railway.app';
+            
             try {
-                const response = await fetch('http://localhost:8000/auth/login', {
+                const response = await fetch(`${API_BASE_URL}/auth/login`, {
                     method: 'POST',
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                     body: new URLSearchParams(data)
@@ -355,8 +360,13 @@
                 password: formData.get('password')
             };
             
+            // 获取API地址
+            const API_BASE_URL = window.API_BASE_URL || 
+                                localStorage.getItem('API_BASE_URL') || 
+                                'https://your-railway-app.up.railway.app';
+            
             try {
-                const response = await fetch('http://localhost:8000/auth/register', {
+                const response = await fetch(`${API_BASE_URL}/auth/register`, {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify(data)
@@ -376,13 +386,18 @@
         
         // Google登录
         async function googleLogin() {
+            // 获取API地址
+            const API_BASE_URL = window.API_BASE_URL || 
+                                localStorage.getItem('API_BASE_URL') || 
+                                'https://your-railway-app.up.railway.app';
+            
             // 检查后端是否可用
             try {
-                const response = await fetch('http://localhost:8000/health');
+                const response = await fetch(`${API_BASE_URL}/health`);
                 if (response.ok) {
                     // 后端可用，使用真实API
                     try {
-                        const authResponse = await fetch('http://localhost:8000/auth/google');
+                        const authResponse = await fetch(`${API_BASE_URL}/auth/google`);
                         const data = await authResponse.json();
                         window.location.href = data.auth_url;
                     } catch (error) {
@@ -391,13 +406,8 @@
                 }
             } catch (error) {
                 // 后端不可用，显示提示信息
-                showMessage('后端未启动。Google登录需要配置OAuth凭证并启动后端服务。', 'error');
-                setTimeout(() => {
-                    const confirm = window.confirm('后端服务未启动。是否查看配置文档？');
-                    if (confirm) {
-                        window.open('完整版启动指南.md', '_blank');
-                    }
-                }, 2000);
+                showMessage(`无法连接到后端API: ${API_BASE_URL}。请检查Railway部署状态。`, 'error');
+                console.error('API连接错误:', error);
             }
         }
     </script>
