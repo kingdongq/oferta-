@@ -72,6 +72,15 @@ async def register(username: str = None, email: str = None, password: str = None
     })
 
 
+# 导入Stripe支付路由
+try:
+    from .stripe_integration import router as stripe_router
+    app.include_router(stripe_router)
+except ImportError:
+    # 如果没有stripe模块，继续运行
+    pass
+
+
 @app.post("/posters/generate")
 async def generate_poster(description: str):
     """生成海报"""
